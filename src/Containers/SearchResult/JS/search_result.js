@@ -22,15 +22,17 @@ class SearchResultPage extends Component {
 			);
 			if (!request.ok) {
 				const error = await request.json();
-				throw Error(error.error.message);
+				throw Error(error.message);
 			}
 			const countryData = await request.json();
 			localStorage.setItem("loading", "false");
+			localStorage.setItem("result", JSON.stringify(countryData));
 			this.setState({
 				result: countryData,
 				loading: localStorage.getItem("loading")
 			});
 		} catch (err) {
+			this.setState({ loading: "false" });
 			alert(`${err}`);
 		}
 	}
@@ -40,19 +42,38 @@ class SearchResultPage extends Component {
 		this.setState({ country: value });
 	}
 
-	handleSubmit(e) {
+	async handleSubmit(e) {
 		e.preventDefault();
 		localStorage.setItem("loading", "true");
+		this.setState({ loading: "true" });
 		localStorage.setItem("country keyword", `${this.state.country}`);
-		if (window.location.split("/")[1] === "./search_result") return;
-		else this.props.history.push("./search_result");
+		try {
+			const country = localStorage.getItem("country keyword");
+			const request = await fetch(
+				`https://restcountries.eu/rest/v2/name/${country}`
+			);
+			if (!request.ok) {
+				const error = await request.json();
+				throw Error(error.error.message);
+			}
+			const countryData = await request.json();
+			localStorage.setItem("loading", "false");
+			localStorage.setItem("result", JSON.stringify(countryData));
+			this.setState({
+				result: countryData,
+				loading: localStorage.getItem("loading")
+			});
+		} catch (err) {
+			this.setState({ loading: "false" });
+			alert(`${err}`);
+		}
 	}
 
 	showResults() {
 		const { result, loading } = this.state;
 		if (loading === "true") return <p>loading</p>;
 		else if (result === null || result.length === 0)
-			return <p>No results found.</p>;
+			return <p className={styles.no_result}>No results found.</p>;
 		return result.map((country, i) => (
 			<EachCountry key={i} country={country} />
 		));
@@ -67,6 +88,9 @@ class SearchResultPage extends Component {
 						submit={this.handleSubmit}
 					/>
 				</header>
+				<p className={styles.resultIndicator}>
+					Showing results for <strong>{this.state.country}</strong>
+				</p>
 				{this.showResults()}
 			</main>
 		);
