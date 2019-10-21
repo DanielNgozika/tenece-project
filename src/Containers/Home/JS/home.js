@@ -27,7 +27,7 @@ class Home extends Component {
 	render() {
 		return (
 			<div className={styles.home}>
-				<h1>Wiki Country</h1>
+				<h1><span>Wiki</span> <span>Country</span></h1>
 				<SearchBar
 					value={this.state.country}
 					onChange={this.handleChange}
