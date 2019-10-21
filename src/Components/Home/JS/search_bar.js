@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from "../CSS/search_bar.module.css";
 
 const searchBar = ({ onChange, value, submit }) => (
-	<form className={styles.form} onSubmit={(e) => submit(e)}>
+	<form className={styles.form} onSubmit={e => submit(e)}>
 		<input
 			placeholder="enter country name"
 			value={value}
@@ -12,4 +12,4 @@ const searchBar = ({ onChange, value, submit }) => (
 	</form>
 );
 
-export default searchBar;
+export default memo(searchBar);

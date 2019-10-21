@@ -1,4 +1,5 @@
-import React from "react";
+import React, { memo } from "react";
+import { Link } from "react-router-dom";
 import styles from "../CSS/each_result.module.css";
 
 const eachCountry = ({ country }) => (
@@ -34,4 +35,4 @@ const eachCountry = ({ country }) => (
 	</div>
 );
 
-export default eachCountry;
+export default memo(eachCountry);
