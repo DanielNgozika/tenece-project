@@ -1,0 +1,25 @@
+body {
+	padding: 0;
+	margin: 0;
+}
+
+.form {
+	width: 80%;
+	padding: 0;
+	margin: 0 auto;
+}
+
+.form input {
+	width: 100%;
+	height: 50px;
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid #817c87;
+	font-family: "Muli", Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	box-sizing: border-box;
+}
+
+.form input::placeholder {
+	color: rgba(129, 124, 135, 0.7);
+}
