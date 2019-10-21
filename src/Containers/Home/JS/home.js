@@ -9,16 +9,19 @@ class Home extends Component {
 			country: ""
 		};
 		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	handleChange(e) {
 		const value = e.target.value;
 		this.setState({ country: value });
-		localStorage.setItem("country keyword", `${this.state.country}`)
 	}
 
-	handleSubmit() {
-		this.history.push("./search_result");
+	handleSubmit(e) {
+		e.preventDefault();
+		localStorage.setItem("loading", "true");
+		localStorage.setItem("country keyword", `${this.state.country}`);
+		this.props.history.push("./search_result");
 	}
 
 	render() {
