@@ -1,0 +1,32 @@
+.div {
+	width: 90%;
+	max-width: 400px;
+	border-radius: 6px;
+	padding: 15px;
+	box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
+	margin: 20px auto;
+	box-sizing: border-box;
+}
+
+.div div {
+	padding: 15px 0;
+}
+
+.div div span:nth-child(1) {
+	display: block;
+	font-family: "Montserrat", Arial, Helvetica, sans-serif;
+	font-weight: 600;
+	color: #817c87;
+}
+
+.div div span:nth-child(2) {
+	font-family: "Muli", Arial, Helvetica, sans-serif;
+	margin-top: 10px;
+}
+
+@media (min-width: 600px) {
+	.div {
+		border: 1px solid #dadce0;
+		box-shadow: none;
+	}
+}

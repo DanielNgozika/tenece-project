@@ -1,0 +1,26 @@
+.main {
+	height: 100vh;
+	margin: 0;
+}
+
+.main header {
+	border-bottom: 1px solid #817c87;
+	padding: 15px 0;
+	margin-bottom: 30px;
+}
+
+p.no_result {
+	font-family: "Muli", Arial, Helvetica, sans-serif;
+	color: #4b4b4e;
+	text-align: center;
+}
+
+p.resultIndicator {
+	font-family: "Muli", Arial, Helvetica, sans-serif;
+	color: #4885ed;
+	text-align: center;
+}
+
+p.resultIndicator strong {
+	font-style: italic;
+}
